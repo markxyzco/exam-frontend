@@ -11,13 +11,13 @@ export default function TestInterface() {
   const [timeLeft, setTimeLeft] = useState(60 * 60); // 1 hour in seconds
 
   useEffect(() => {
-    fetch("http://localhost:5000/auth/current_user", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/current_user`, {
       credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => setUser(data));
 
-    fetch(`http://localhost:5000/tests/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/tests/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTest(data);
@@ -81,7 +81,7 @@ export default function TestInterface() {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/submit", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/submit`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -143,7 +143,7 @@ export default function TestInterface() {
 
           {currentQuestion.question_image && (
             <img
-              src={`http://localhost:5000/uploads/${currentQuestion.question_image}`}
+              src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${currentQuestion.question_image}`}
               alt="Question"
               className="mb-4 w-60"
             />

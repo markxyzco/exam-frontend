@@ -7,13 +7,13 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/auth/current_user", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/current_user`, {
       credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => setUser(data));
 
-    fetch("http://localhost:5000/tests")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/tests`)
       .then((res) => res.json())
       .then((data) => setTests(data));
   }, []);

@@ -6,18 +6,18 @@ export default function Login() {
 
   useEffect(() => {
     // Check if already logged in
-    axios.get('http://localhost:5000/auth/current_user', { withCredentials: true })
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/current_user`, { withCredentials: true })
       .then(res => {
         if (res.data) setUser(res.data);
       });
   }, []);
 
   const handleLogin = () => {
-    window.open('http://localhost:5000/auth/google', '_self');
+    window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`, '_self');
   };
 
   const handleLogout = () => {
-    window.open('http://localhost:5000/auth/logout', '_self');
+    window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, '_self');
   };
 
   return (

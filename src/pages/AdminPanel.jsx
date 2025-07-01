@@ -43,7 +43,7 @@ export default function TestInterface() {
   const fileInputRef = useRef(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/auth/current_user", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/current_user`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -74,7 +74,7 @@ export default function TestInterface() {
     formData.append("image", file);
 
     try {
-      const res = await fetch("http://localhost:5000/admin/upload", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/admin/upload`, {
         method: "POST",
         credentials: "include",
         body: formData,
@@ -149,7 +149,7 @@ export default function TestInterface() {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/save_test", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/save_test`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
