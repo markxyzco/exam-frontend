@@ -13,7 +13,9 @@ export default function Dashboard() {
       .then((res) => res.json())
       .then((data) => setUser(data));
 
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/tests`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/tests`, {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => setTests(data));
   }, []);
